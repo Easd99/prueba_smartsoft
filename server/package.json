@@ -1,0 +1,22 @@
+{
+  "name": "prueba_tecnica",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "Erick Solano",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.6.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.34"
+  }
+}
