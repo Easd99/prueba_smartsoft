@@ -1,4 +1,5 @@
 require('./database')
+require('./redisdb')
 const app = require('./app')
 
 
