@@ -9,8 +9,6 @@ const productsCtrl = {}
 
 //GET all Products
 productsCtrl.getProducts = async (req, res) => {
-    //const products = await getRepository(Product).find({ relations: ["categories"] })
-
     var products = []
     const resultado = await client.keys(`product_*`)
 
@@ -28,10 +26,6 @@ productsCtrl.getProducts = async (req, res) => {
 //GET one Product by id
 productsCtrl.getProduct = async (req, res) => {
     const {id} = req.params
-    //const product = await getRepository(Product).findOne(id, { relations: ["categories"] })
-    // if (!product){
-    //     return res.status(404).json({error:"NOT FOUND"})
-    // }
     const resultado = await client.keys(`product_${id}`)
     if (resultado.length === 0){
         return res.status(404).json({error:"NOT FOUND"})
@@ -55,7 +49,6 @@ productsCtrl.deleteProduct = async (req, res) => {
 
 //Create new Product
 productsCtrl.createProduct = async (req, res) => {
-    //const {name, price, inventory } = req.body
     const {category, price, inventory } = req.body
     const newProduct = await getRepository(Product).create(req.body)
     const find_category = await getRepository(Category).findOne(

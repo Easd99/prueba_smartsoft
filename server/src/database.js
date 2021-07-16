@@ -11,7 +11,8 @@ const connection = typeorm.createConnection({
     logging: false,
     entities: [
         require("./entity/ProductSchema"),
-        require("./entity/CategorySchema")
+        require("./entity/CategorySchema"),
+        require("./entity/UserSchema")
     ]
 })
 
