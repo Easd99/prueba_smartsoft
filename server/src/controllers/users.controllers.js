@@ -15,7 +15,7 @@ userCtrl.getUser = async (req, res) => {
     })
 
     if (!find_user){
-        return res.status(404).json({error: "error"})
+        return res.status(401).json({error: "error"})
     }
 
     if (find_user.password == password){
@@ -25,7 +25,7 @@ userCtrl.getUser = async (req, res) => {
         }
         return res.json({ok: hashuser})
     }else{
-        return res.json({error: "error"})
+        return res.status(401).json({error: "error"})
     }
 
     

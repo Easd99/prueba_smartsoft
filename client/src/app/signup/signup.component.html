@@ -1,0 +1,27 @@
+<div class="login-container">
+  <div class="login-wrapper">
+    <h1>Sign Up</h1>
+    <form [formGroup]="User" (ngSubmit)="SignUp()" class="login">
+      <div>
+        <input
+          id="username"
+          type="text"
+          formControlName="username"
+          placeholder="Username"
+        />
+      </div>
+
+      <div>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+        />
+      </div>
+      
+      <button class="button" type="submit">Register</button>
+      <button class="button" type="submit">Login</button>
+    </form>
+  </div>
+</div>

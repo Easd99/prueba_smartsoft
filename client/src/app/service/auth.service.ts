@@ -17,5 +17,9 @@ export class AuthService{
     signIn(user:any){
         return this.http.post<any>(this._URL + '/signin', user )
     }
+
+    verifytoken(){
+      return !!localStorage.getItem('id')
+    }
    
 }
