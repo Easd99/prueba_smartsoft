@@ -6,6 +6,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class ProductService{
     _URL = 'https://jsonplaceholder.typicode.com/users';
+    URL = 'http://localhost:4000/api/v1/products';
     constructor(
         private http: HttpClient
     ){
@@ -16,8 +17,15 @@ export class ProductService{
         const header = new HttpHeaders()
             .set('Type-content', 'aplicacion/json') 
         
-        return this.http.get(this._URL, {
+        return this.http.get(this.URL, {
             headers: header
         })
     }
+    postProduct(product:any){
+        return this.http.post<any>(this.URL + '/', product )
+    }
+    deleteProduct(id:any){
+        return this.http.delete<any>(this.URL + `/${id}` )
+    }
+    
 }

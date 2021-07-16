@@ -1,5 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../service/products.service'
+import {AuthService} from '../service/auth.service'
+import {Router} from '@angular/router'
 
 
 @Component({
@@ -9,17 +11,37 @@ import {ProductService} from '../service/products.service'
 })
 
 
-export class MainComponent{
+export class MainComponent implements OnInit{
     title = "prueba";
     public products: Array<any> = []
 
-    constructor(
-        private productService: ProductService
-    ){
+    ngOnInit(){
         this.productService.getProducts().subscribe((resp: any) => {
             console.log(resp)
             this.products = resp
         })
     }
+
+    
+    deleteProduct(id:any){
+        this.productService.deleteProduct(id).subscribe((resp: any) => {
+            console.log(resp)
+            this.ngOnInit();
+        },
+        err => {
+            console.log(err)
+        })
+    }
+    logout(){
+        localStorage.removeItem('id')
+    }
+    
+
+
+    constructor(
+        private productService: ProductService,
+        public authService: AuthService,
+        private router: Router,
+    ){}
 
 }

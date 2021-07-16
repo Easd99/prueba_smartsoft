@@ -1,7 +1,7 @@
 const Product = require("../model/Product").Product;
-const Category   = require("../model/Category").Category;
+const Category  = require("../model/Category").Category;
 const client = require('../redisdb')
-const {getRepository} = require('typeorm')
+const {getRepository, Like} = require('typeorm')
 
 
 const productsCtrl = {}
@@ -35,6 +35,34 @@ productsCtrl.getProduct = async (req, res) => {
     return res.json(product_json)
 }
 
+//Update one Product
+productsCtrl.updateProduct = async (req, res) => {
+    const {id} = req.params
+    const {category, price, inventory } = req.body
+    const oldProduct = await getRepository(Product).findOne(id)
+    if(oldProduct){
+        getRepository(Product).merge(oldProduct, req.body)
+        const newProduct = await getRepository(Product).save(oldProduct)
+        var find_category = await getRepository(Category).findOne(
+            { where:
+                { name: category }
+        })
+        
+        if(!find_category){
+            hcategory={
+                name: category
+            }
+            const newCategory = getRepository(Category).create(hcategory)
+            find_category = await getRepository(Category).save(newCategory)
+        }
+
+        newProduct.categories = [find_category]
+        const resultado = await client.keys(`product_${id}`)
+        client.set(resultado[0],JSON.stringify(newProduct))
+        return res.json(newProduct)
+    }
+}
+
 //DELETE one Product by id
 productsCtrl.deleteProduct = async (req, res) => {
     const {id} = req.params
@@ -51,10 +79,18 @@ productsCtrl.deleteProduct = async (req, res) => {
 productsCtrl.createProduct = async (req, res) => {
     const {category, price, inventory } = req.body
     const newProduct = await getRepository(Product).create(req.body)
-    const find_category = await getRepository(Category).findOne(
+    var find_category = await getRepository(Category).findOne(
         { where:
             { name: category }
         })
+    
+    if(!find_category){
+            hcategory={
+                name: category
+            }
+            const newCategory = getRepository(Category).create(hcategory)
+            find_category = await getRepository(Category).save(newCategory)
+    }
     newProduct.categories = [find_category]
     const product = await getRepository(Product).save(newProduct)
     

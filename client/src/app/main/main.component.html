@@ -1,2 +1,33 @@
-<h1> {{products[1].name}} </h1>
+<header class="header">
+	<div class="h-container">
+        <nav class="nav">
+			<ul class="nav-list">
+				<li class="active">
+					<a routerLink="/home" routerLinkActive="active">Productos</a>
+				</li>
+				<li>
+					<a routerLink="/newproduct" routerLinkActive="active">Agregar Producto</a>
+				</li>
+                <ng-container *ngIf="authService.verifytoken()">
+                    <li>
+                        <a (click)="logout()">LogOut</a>
+                    </li>
+                </ng-container>
 
+			</ul>
+		</nav>
+	</div>
+</header>
+<div id="main">
+    <div id="sidebar"></div>
+    <div id="page-wrap">
+
+        <ul class="ulcla"> 
+            <li class="licla" *ngFor="let product of products">
+                {{product.name}} - {{product.name}}
+                <button class="tabopen" (click)="deleteProduct(product.id)">delete</button>
+            </li>
+        </ul>
+
+    </div>
+  </div>

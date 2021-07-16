@@ -1,0 +1,67 @@
+<header class="header">
+	<div class="h-container">
+        <nav class="nav">
+			<ul class="nav-list">
+				<li >
+					<a routerLink="/home" routerLinkActive="active">Productos</a>
+				</li>
+				<li class="active">
+					<a routerLink="/newproduct" routerLinkActive="active">Agregar Producto</a>
+				</li>
+                <ng-container *ngIf="authService.verifytoken()">
+                    <li>
+                        <a href="#">LogOut</a>
+                    </li>
+                </ng-container>
+
+			</ul>
+		</nav>
+	</div>
+</header>
+<div id="main">
+    <div id="sidebar"></div>
+    <div id="page-wrap">
+
+        <form [formGroup]="Product" (ngSubmit)="newProduct()" class="f-group">
+            <div>
+              <input
+                id="name"
+                type="text"
+                formControlName="name"
+                placeholder="name"
+              />
+            </div>
+            <div>
+              <input
+                id="price"
+                type="text"
+                formControlName="price"
+                placeholder="price"
+              />
+            </div>
+            <div>
+              <input
+                id="inventory"
+                type="text"
+                formControlName="inventory"
+                placeholder="inventory"
+              />
+            </div>
+            <div>
+              <input
+                id="category"
+                type="text"
+                formControlName="category"
+                placeholder="category"
+              />
+            </div>
+            
+            
+            <button class="button" type="submit">Agregar</button>
+          </form>
+
+
+
+
+    </div>
+  </div>
