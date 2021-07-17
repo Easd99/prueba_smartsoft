@@ -25,7 +25,7 @@
 <div id="main">
   <div id="sidebar"></div>
   <div id="contend-area ">
-    <form [formGroup]="Product" (ngSubmit)="newProduct()" class="f-group">
+    <form [formGroup]="Product" (ngSubmit)="updateProduct()" class="f-group">
       <div>
         <input
           id="name"
@@ -59,7 +59,7 @@
         />
       </div>
 
-      <button class="button" type="submit">Agregar</button>
+      <button class="button" type="submit">Actualizar</button>
     </form>
   </div>
 </div>

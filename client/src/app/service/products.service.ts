@@ -21,8 +21,19 @@ export class ProductService{
             headers: header
         })
     }
+    getProduct(id:any){
+        const header = new HttpHeaders()
+            .set('Type-content', 'aplicacion/json') 
+        
+        return this.http.get(this.URL + `/${id}`, {
+            headers: header
+        })
+    }
     postProduct(product:any){
         return this.http.post<any>(this.URL + '/', product )
+    }
+    putProduct(product:any, id:any){
+        return this.http.put<any>(this.URL + `/${id}`, product )
     }
     deleteProduct(id:any){
         return this.http.delete<any>(this.URL + `/${id}` )

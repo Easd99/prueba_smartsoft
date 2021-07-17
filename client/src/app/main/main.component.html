@@ -8,6 +8,9 @@
 				<li>
 					<a routerLink="/newproduct" routerLinkActive="active">Agregar Producto</a>
 				</li>
+                <li class="buscar">
+					<input type="text" placeholder="Buscar ">
+				</li>
                 <ng-container *ngIf="authService.verifytoken()">
                     <li>
                         <a (click)="logout()">LogOut</a>
@@ -20,12 +23,13 @@
 </header>
 <div id="main">
     <div id="sidebar"></div>
-    <div id="page-wrap">
+    <div id="contend-area">
 
         <ul class="ulcla"> 
             <li class="licla" *ngFor="let product of products">
                 {{product.name}} - {{product.name}}
-                <button class="tabopen" (click)="deleteProduct(product.id)">delete</button>
+                <button class="tabopen" (click)="deleteProduct(product.id)">Delete</button>
+                <button [routerLink]="['/update/',product.id ]"> Update </button>
             </li>
         </ul>
 

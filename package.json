@@ -1,0 +1,6 @@
+{
+"scripts": {
+      "back": "node server/src/index.js",
+      "front": "cd client && ng serve"
+    }
+}

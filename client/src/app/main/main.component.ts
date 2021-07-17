@@ -34,6 +34,7 @@ export class MainComponent implements OnInit{
     }
     logout(){
         localStorage.removeItem('id')
+        window.location.reload();
     }
     
 

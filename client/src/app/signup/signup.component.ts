@@ -26,11 +26,11 @@ export class SignupComponent{
     
     SignUp(){
         // Process checkout data here
-        this.authService.signIn(this.User.value)
+        this.authService.signUp(this.User.value)
             .subscribe(
                 res => {
                     console.log(res)
-                    localStorage.setItem('id', res.ok.id )
+                    localStorage.setItem('id', res.id )
                     this.router.navigate(['/home'])
                 },
                 err => {
