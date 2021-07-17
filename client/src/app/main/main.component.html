@@ -24,12 +24,37 @@
 <div id="main">
     <div id="sidebar"></div>
     <div id="contend-area">
-
+        
         <ul class="ulcla"> 
             <li class="licla" *ngFor="let product of products">
-                {{product.name}} - {{product.name}}
-                <button class="tabopen" (click)="deleteProduct(product.id)">Delete</button>
-                <button [routerLink]="['/update/',product.id ]"> Update </button>
+                <div className="product-card">
+                    <div className="card-body">
+                        <h4 className="title">
+                            {{product.name}}
+                        </h4>
+                        <p className="id">
+                            <label>Id: </label> {{product.id}}
+                        </p>
+                        <h3 className="cat">
+                            <div *ngIf="product.categories[0]">
+                                <label>categoria: </label> {{product.categories[0].name}}
+                            </div>
+                            
+                        </h3>
+                        <h3 className="price">
+                            <label>Precio: </label>  {{product.price}}
+                        </h3>
+                        <h3 className="inv">
+                            <label>Inventario: </label>   {{product.inventory}}
+                        </h3>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="tabopen" (click)="deleteProduct(product.id)">Delete</button>
+                    <button [routerLink]="['/update/',product.id ]"> Update </button> 
+                </div>
+
+ 
             </li>
         </ul>
 

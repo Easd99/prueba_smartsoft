@@ -2,10 +2,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {AuthGuard} from './auth.guard'
+import {AuthGuard} from './auth.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import {MatTableModule} from '@angular/material/table'
 // import { MainComponent } from './main/main.component';
 // import { LoginComponent } from './login/login.component';
 
@@ -21,7 +22,9 @@ import {AuthGuard} from './auth.guard'
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatTableModule
   ],
   providers: [
     AuthGuard

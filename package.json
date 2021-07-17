@@ -1,6 +1,8 @@
 {
 "scripts": {
       "back": "node server/src/index.js",
-      "front": "cd client && ng serve"
+      "front": "cd client && ng serve",
+      "modulo-b": "cd server && npm i",
+      "modulo-f": "cd client && npm i"
     }
 }
